@@ -5,6 +5,10 @@ const app = express();
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Proxy server is running");
+});
+
 app.use("/proxy", (req, res, next) => {
   console.log(`[PROXY] ${req.method} ${req.originalUrl}`);
   const target = "http://ec2-3-8-134-165.eu-west-2.compute.amazonaws.com:8000";
